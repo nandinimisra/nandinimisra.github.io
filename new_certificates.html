@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Nandini Misra — VFX Artist portfolio, compositing, roto, paint and visual effects.">
+<title>Nandini Misra — VFX Artist | Compositing, Roto & Paint</title>
+
+<!-- SOCIAL SHARING / OPEN GRAPH TAGS -->
+<meta property="og:title" content="Nandini Misra — VFX Artist">
+<meta property="og:description" content="VFX portfolio — compositing, roto, paint, DMP and matchmove.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.YOURDOMAIN.com/">
+<meta property="og:image" content="https://www.YOURDOMAIN.com/assets/Social_Thumbnail.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- GOOGLE ANALYTICS (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<meta name="author" content="Nandini Misra">
+<meta name="theme-color" content="#070707">
+
+<style>
+:root{
+  --bg:#070707;--panel:#0e0e10;--text:#f5f5f2;--muted:#9b9b9b;
+  --line:rgba(255,255,255,.12);--lime:#d8ff42;--max:1320px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--lime);color:#000}
+
+/* PRE-LOADER */
+#preloader{position:fixed;inset:0;z-index:99999;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .6s ease;}
+.loaderLogo{font-size:48px;font-weight:900;color:var(--lime);letter-spacing:-.05em;animation:pulse 1.5s infinite ease-in-out;}
+@keyframes pulse{0%,100%{opacity:.3;transform:scale(0.95)}50%{opacity:1;transform:scale(1.05)}}
+
+/* NAV */
+nav{
+ position:fixed;z-index:50;top:0;left:0;right:0;height:76px;padding:0 4vw;
+ display:flex;align-items:center;justify-content:space-between;
+ background:linear-gradient(#070707e8,transparent);backdrop-filter:blur(12px)
+}
+.logo{font-weight:900;font-size:14px;letter-spacing:-.03em}
+.logo span{color:var(--lime)}
+.links{display:flex;gap:28px;font-size:11px;letter-spacing:.13em;color:#aaa}
+.links a{transition:.25s}.links a:hover{color:var(--lime)}
+
+/* HERO & PARALLAX CAROUSEL */
+.hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.heroVisual{position:absolute;inset:0;background:#000;}
+.heroBg{position:absolute;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.15);transform-origin:top center;will-change:transform;opacity:0;transition:opacity 1.5s ease-in-out;}
+.heroBg.active{opacity:1;}
+.heroVisual:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(90deg,#000b 0%,#0004 42%,transparent 72%),
+ linear-gradient(0deg,#070707 0%,transparent 43%);
+}
+.heroCopy{position:relative;z-index:3;width:min(var(--max),92%);margin:auto;padding:120px 0 11vh}
+.kicker{font-size:10px;letter-spacing:.26em;color:var(--lime);text-transform:uppercase;margin-bottom:20px}
+h1{font-size:clamp(58px,9vw,145px);line-height:.82;letter-spacing:-.075em;max-width:900px}
+.heroCopy p{max-width:600px;margin-top:28px;color:#c6c6c6;font-size:16px;line-height:1.65}
+.heroMeta{margin-top:34px;display:flex;gap:10px;flex-wrap:wrap}
+.pill{border:1px solid #ffffff24;background:#0005;padding:8px 12px;border-radius:999px;font-size:10px;color:#ccc}
+.heroCorner{position:absolute;right:4vw;bottom:11vh;z-index:4;text-align:right;color:#aaa;font-size:9px;letter-spacing:.17em}
+.heroCorner strong{display:block;color:#fff;font-size:12px;margin-bottom:7px}
+.scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:4;font-size:9px;letter-spacing:.2em;color:#777}
+
+/* PROCESS / DRAGGABLE SLIDER & STEP-BY-STEP */
+section{padding:130px 0; scroll-margin-top: 80px;}
+.wrap{width:min(var(--max),92%);margin:auto}
+.sectionLabel{font-size:10px;color:var(--lime);letter-spacing:.25em;text-transform:uppercase;margin-bottom:14px}
+.sectionTitle{font-size:clamp(40px,6vw,82px);line-height:.9;letter-spacing:-.065em}
+.sectionIntro{max-width:580px;color:var(--muted);line-height:1.7;font-size:14px;margin-top:20px}
+
+.processGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:55px}
+.processShot{background:#0b0b0d;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 30px 90px #0008;position:relative;}
+.processFrame{position:relative;aspect-ratio:16/9;overflow:hidden;background:#000;touch-action:pan-y;}
+.processFrame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;user-select:none;}
+
+/* SLIDER STYLES */
+.beforeImage{z-index:1;clip-path:inset(0 50% 0 0);}
+.sliderHandle{position:absolute;inset:0 0 0 50%;z-index:2;width:2px;background:var(--lime);transform:translateX(-50%);pointer-events:none;}
+.sliderHandle::after{content:'↔';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:28px;height:28px;background:#000a;backdrop-filter:blur(4px);border:2px solid var(--lime);color:var(--lime);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;pointer-events:none;}
+.sliderRange{position:absolute;inset:0;z-index:3;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;-webkit-appearance:none;}
+.sliderLabel{position:absolute;bottom:12px;z-index:4;padding:5px 8px;background:#000a;border:1px solid #fff2;color:#eee;font-size:8px;letter-spacing:.15em;border-radius:999px;pointer-events:none;text-transform:uppercase;}
+.sliderLabel.left{left:12px;}
+.sliderLabel.right{right:12px;}
+
+/* STEP-BY-STEP ROTO STYLES */
+.stepImage{opacity:0;transition:opacity .4s ease; z-index:1;}
+.stepImage.active{opacity:1;z-index:2;}
+.stepControls{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;background:#000a;padding:6px 10px;border-radius:20px;backdrop-filter:blur(4px);border:1px solid #fff2; max-width: 90%;}
+.stepBtn{width:22px;height:22px;border-radius:50%;background:transparent;border:1px solid #fff4;color:#eee;font-size:10px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;}
+.stepBtn:hover{border-color:var(--lime);color:var(--lime);}
+.stepBtn.active{background:var(--lime);color:#000;border-color:var(--lime);font-weight:bold;}
+
+/* MATTE PAINTING TOGGLE STYLES */
+.dmpImage{opacity:0;transition:opacity .4s ease; z-index:1;}
+.dmpImage.active{opacity:1;z-index:2;}
+.dmpControls{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:8px;background:#000a;padding:6px 14px;border-radius:20px;backdrop-filter:blur(4px);border:1px solid #fff2;}
+.dmpBtn{background:transparent;border:none;color:#aaa;font-size:9px;letter-spacing:.15em;cursor:pointer;text-transform:uppercase;transition:.2s;padding:2px 6px;}
+.dmpBtn:hover{color:var(--lime);}
+.dmpBtn.active{color:var(--lime);font-weight:bold;border-bottom:1px solid var(--lime);}
+
+/* LIGHTBOX EXPAND BUTTON */
+.expandBtn{position:absolute;top:18px;right:18px;z-index:10;width:32px;height:32px;border-radius:50%;background:#000a;border:1px solid #fff2;color:#eee;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;backdrop-filter:blur(4px);font-size:16px;}
+.expandBtn:hover{background:var(--lime);color:#000;border-color:var(--lime);transform:scale(1.1);}
+
+.processBadge{position:absolute;left:18px;top:18px;z-index:4;padding:7px 10px;border:1px solid #fff2;background:#0009;border-radius:999px;font-size:9px;letter-spacing:.15em;color:#eee;text-transform:uppercase;pointer-events:none;}
+
+.processInfo{display:flex;justify-content:space-between;gap:20px;padding:20px 21px 22px}
+.processInfo h3{font-size:18px;letter-spacing:-.03em}
+.processInfo p{color:#777;font-size:11px;line-height:1.6;margin-top:7px;max-width:440px}
+.processInfo .shotNo{font-size:9px;color:#666;letter-spacing:.15em;padding-top:3px}
+.shotTags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.shotTags span{font-size:8px;color:var(--lime);border:1px solid #d8ff4240;padding:4px 8px;border-radius:999px;letter-spacing:.1em;text-transform:uppercase;}
+.labCaption{display:flex;justify-content:space-between;margin-top:18px;color:#777;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+
+/* SHOWREEL */
+.reelSection{background:#0b0b0d;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.reelStack{display:grid;gap:95px;margin-top:65px}
+.reelShowcase{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(260px,.55fr);gap:34px;align-items:center}
+.reelShowcase:nth-child(even){grid-template-columns:minmax(260px,.55fr) minmax(0,1.55fr)}
+.reelShowcase:nth-child(even) .reelVideo{grid-column:2;grid-row:1}
+.reelShowcase:nth-child(even) .reelDetails{grid-column:1;grid-row:1}
+.reelVideo{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 25px 70px #0008}
+.reelVideo video{width:100%;height:100%;border:0;display:block;object-fit:cover;background:#000}
+.reelDetails{display:grid;grid-template-columns:35px 1fr;gap:20px;padding-bottom:4px}
+.reelNumber{font-size:10px;color:#666;letter-spacing:.12em;padding-top:5px}
+.reelKicker{font-size:9px;color:var(--lime);letter-spacing:.2em;margin-bottom:9px}
+.reelDetails h3{font-size:clamp(22px,2.4vw,34px);letter-spacing:-.045em;line-height:1}
+.reelDetails p{color:#888;font-size:13px;line-height:1.75;margin-top:14px}
+.reelTags{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
+.reelTags span{font-size:9px;color:#aaa;border:1px solid var(--line);padding:6px 9px;border-radius:999px}
+
+/* FULLSCREEN LIGHTBOX */
+.lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s ease;}
+.lightbox.active{opacity:1;pointer-events:all;}
+.lightboxClose{position:absolute;top:30px;right:4vw;background:none;border:none;color:#fff;font-size:35px;cursor:pointer;z-index:10000;transition:.2s;}
+.lightboxClose:hover{color:var(--lime);transform:scale(1.1);}
+.lightboxContent{width:90%;max-width:1400px;max-height:90vh;display:flex;justify-content:center;align-items:center;}
+.lightboxContent video{max-width:100%;max-height:90vh;object-fit:contain;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,0.8);}
+.lightboxContent .processFrame { width:100%; height:auto; max-height:85vh; border-radius:12px; box-shadow:0 30px 80px rgba(0,0,0,0.8); background:transparent; overflow:hidden;}
+.lightboxContent .processFrame img { border-radius:12px; }
+.lightboxContent .expandBtn { display: none; } 
+
+/* BACK TO TOP BUTTON */
+#backToTop{position:fixed;bottom:30px;right:30px;z-index:90;width:44px;height:44px;border-radius:50%;background:var(--lime);color:#000;border:none;font-size:22px;cursor:pointer;opacity:0;pointer-events:none;transition:.3s;box-shadow:0 5px 15px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;font-weight:bold;}
+#backToTop.show{opacity:1;pointer-events:all;}
+#backToTop:hover{transform:translateY(-5px);}
+
+/* ABOUT / QUALIFICATIONS */
+.aboutGrid{display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-top:60px}
+.aboutText p{color:#999;line-height:1.8;font-size:14px;max-width:570px}
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:28px}
+.skill{padding:15px;border:1px solid var(--line);border-radius:11px;background:#0d0d0f;font-size:11px}
+.skill b{display:block;font-size:13px;margin-bottom:4px}.skill span{color:#666}
+.docs{display:grid;gap:10px}
+.doc{
+ display:flex;align-items:center;justify-content:space-between;gap:20px;
+ padding:21px;border:1px solid var(--line);background:#0d0d0f;border-radius:12px;
+ transition:.25s
+}
+.doc:hover{border-color:#d8ff4260;transform:translateX(4px)}
+.doc small{display:block;color:#666;margin-top:4px;font-size:10px}
+.doc .arrow{color:var(--lime);font-size:17px}
+
+/* FOOTER */
+footer{padding:80px 0 30px;border-top:1px solid var(--line)}
+.footerBig{font-size:clamp(45px,8vw,110px);letter-spacing:-.07em;line-height:.85}
+.footerRow{display:flex;justify-content:space-between;margin-top:60px;color:#666;font-size:10px;letter-spacing:.12em}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.show{opacity:1;transform:none}
+
+@media(max-width:800px){
+ .links{display:none}
+ section{padding:90px 0}
+ .heroCopy{padding-bottom:90px}
+ .heroCorner{display:none}
+ .workGrid,.aboutGrid,.reelShowcase,.processGrid{grid-template-columns:1fr}
+ .skills{grid-template-columns:1fr}.reelStack{gap:65px}.reelDetails{padding:0 4px}
+ .footerRow{display:block;line-height:2}
+ .lightboxClose{top:15px;right:5vw;}
+ #backToTop{bottom:20px;right:20px;width:38px;height:38px;font-size:18px;}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}.reveal{transition:none}
+}
+
+/* CERTIFICATES — added only */
+.certificatesSection{padding:125px 0;border-top:1px solid var(--line);}
+.certificatesGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:50px;}
+.certificateCard{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px;border:1px solid var(--line);border-radius:12px;background:#0d0d0f;transition:.25s;}
+.certificateCard:hover{border-color:#d8ff4260;transform:translateX(4px);}
+.certificateCard small{display:block;color:#666;margin-top:5px;font-size:10px;}
+.certificateCard .arrow{color:var(--lime);font-size:17px;}
+@media(max-width:800px){.certificatesGrid{grid-template-columns:1fr;}}
+
+
+/* ACADEMIC MARKSHEETS — added only */
+.marksheetsBlock{margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+.marksheetsGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.marksheetCard{display:block;position:relative;overflow:hidden;padding:0;border:1px solid var(--line);border-radius:12px;background:#0d0d0f;cursor:pointer;text-decoration:none;transition:.25s}
+.marksheetCard:hover{border-color:#d8ff4260;transform:translateY(-3px)}
+.marksheetCard img{display:block;width:100%;aspect-ratio:1.55/1;object-fit:cover;object-position:top;opacity:.88;transition:.25s}
+.marksheetCard:hover img{opacity:1;transform:scale(1.015)}
+.marksheetInfo{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px}
+.marksheetInfo b{font-size:10px;color:#fff}
+.marksheetInfo small{display:block;color:#666;margin-top:3px;font-size:8px}
+.marksheetArrow{color:var(--lime);font-size:13px}
+@media(max-width:900px){.marksheetsGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.marksheetsGrid{grid-template-columns:1fr}}
+
+</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23070707'/%3E%3Ctext x='50' y='67' text-anchor='middle' font-size='48' font-family='Arial' font-weight='900' fill='%23d8ff42'%3ENM%3C/text%3E%3C/svg%3E">
+
+<style id="portfolio-final-pass">
+.heroActions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.primaryAction,.secondaryAction{font-size:10px;letter-spacing:.14em;padding:11px 14px;border-radius:999px;transition:.25s}
+.primaryAction{background:var(--lime);color:#000;font-weight:800}
+.secondaryAction{border:1px solid #ffffff30;color:#ddd}
+.primaryAction:hover,.secondaryAction:hover{transform:translateY(-2px)}
+.aboutLead{font-size:10px;letter-spacing:.2em;color:var(--lime);margin-bottom:14px}
+.miniLabel{font-size:9px;letter-spacing:.2em;color:#666;margin-bottom:14px;text-transform:uppercase}
+.softwareBlock{margin-top:42px;padding-top:25px;border-top:1px solid var(--line)}
+.softwareList{display:flex;gap:8px;flex-wrap:wrap}
+.softwareList span{font-size:9px;letter-spacing:.08em;padding:8px 10px;border:1px solid var(--line);border-radius:999px;color:#bbb}
+.contactSection{padding:125px 0;border-top:1px solid var(--line);background:#09090a}
+.contactGrid{display:grid;grid-template-columns:1.4fr .6fr;gap:60px;margin-top:45px;align-items:end}
+.contactKicker{font-size:10px;letter-spacing:.22em;color:var(--lime);margin-bottom:16px}
+.contactTitle{font-size:clamp(55px,8vw,115px);line-height:.82;letter-spacing:-.075em}
+.contactLinks{display:grid;gap:10px}
+.contactLink{display:block;padding:19px;border:1px solid var(--line);border-radius:12px;background:#0d0d0f;transition:.25s}
+.contactLink:hover{border-color:#d8ff4260;transform:translateX(4px)}
+.contactLink span{display:block;color:#666;font-size:9px;letter-spacing:.18em;margin-bottom:8px}
+.contactLink b{font-size:13px;font-weight:500;color:#ddd;overflow-wrap:anywhere}
+@media(max-width:800px){
+ .contactGrid{grid-template-columns:1fr;gap:35px}
+ .contactSection{padding:90px 0}
+}
+</style>
+
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="loaderLogo">NM.</div>
+</div>
+
+<nav>
+ <a class="logo" href="#top">NANDINI<span>.</span>MISRA</a>
+ <div class="links">
+   <a href="#work">WORK</a>
+   <a href="#showreel">SHOWREELS</a>
+   <a href="#about">ABOUT & CV</a>
+    <a href="#certificates">CERTIFICATES</a>
+   <a href="#contact">CONTACT</a>
+ </div>
+</nav>
+
+<header class="hero" id="top">
+ <div class="heroVisual">
+   <!-- HERO CAROUSEL IMAGES (1 through 18) -->
+   <img class="heroBg active" src="assets/1.jpg" alt="Hero VFX shot 1">
+   <img class="heroBg" src="assets/2.jpg" alt="Hero VFX shot 2">
+   <img class="heroBg" src="assets/3.jpg" alt="Hero VFX shot 3">
+   <img class="heroBg" src="assets/4.png" alt="Hero VFX shot 4">
+   <img class="heroBg" src="assets/5.png" alt="Hero VFX shot 5">
+   <img class="heroBg" src="assets/6.png" alt="Hero VFX shot 6">
+   <img class="heroBg" src="assets/7.png" alt="Hero VFX shot 7">
+   <img class="heroBg" src="assets/8.png" alt="Hero VFX shot 8">
+   <img class="heroBg" src="assets/9.png" alt="Hero VFX shot 9">
+   <img class="heroBg" src="assets/10.png" alt="Hero VFX shot 10">
+   <img class="heroBg" src="assets/11.png" alt="Hero VFX shot 11">
+   <img class="heroBg" src="assets/12.png" alt="Hero VFX shot 12">
+   <img class="heroBg" src="assets/13.png" alt="Hero VFX shot 13">
+   <img class="heroBg" src="assets/14.png" alt="Hero VFX shot 14">
+   <img class="heroBg" src="assets/15.png" alt="Hero VFX shot 15">
+   <img class="heroBg" src="assets/16.png" alt="Hero VFX shot 16">
+   <img class="heroBg" src="assets/17.png" alt="Hero VFX shot 17">
+   <img class="heroBg" src="assets/18.png" alt="Hero VFX shot 18">
+ </div>
+ <div class="heroCopy reveal">
+   <div class="kicker">NANDINI MISRA / VFX ARTIST</div>
+   <h1>MAKE THE<br>FRAME BELIEVABLE.</h1>
+   <p>VFX artist focused on compositing, rotoscoping, paint, digital matte painting and matchmove — with an emphasis on clean, production-ready shots.</p>
+   <div class="heroMeta">
+    <span class="pill">ROTOSCOPY</span><span class="pill">PAINT/PREP</span><span class="pill">COMPOSITE</span><span class="pill">MATCHMOVE</span><span class="pill">DMP</span><span class="pill">FX/CGI</span>
+   </div>
+   <div class="heroActions">
+    <a class="primaryAction" href="#showreel">VIEW SHOWREELS ↓</a>
+    <a class="secondaryAction" href="#contact">CONTACT ↗</a>
+   </div>
+ </div>
+ <div class="heroCorner"><strong> PORTFOLIO</strong>COMP / ROTO / PAINT / DMP</div>
+ <div class="scroll">SCROLL ↓</div>
+</header>
+
+<section id="work">
+ <div class="wrap">
+  <div class="sectionLabel reveal">01 / SELECTED WORK</div>
+  <div class="sectionTitle reveal">PROCESS<br>SHOWCASING.</div>
+  <p class="sectionIntro reveal">The final image matters, but so does the work behind it. Drag the sliders or click the progression buttons to compare the source plates with the finished work.</p>
+
+  <div class="processGrid">
+   <article class="processShot reveal sliderShot" data-shot="1">
+    <div class="processFrame">
+     <img class="afterImage" loading="lazy" src="assets/after.png" alt="Finished night composite">
+     <img class="beforeImage" loading="lazy" src="assets/before.png" alt="Daylight plate before VFX">
+     <div class="sliderHandle"></div>
+     <input type="range" min="0" max="100" value="50" class="sliderRange" aria-label="Image comparison slider">
+     <span class="processBadge">DAY → NIGHT</span>
+     <span class="sliderLabel left">BEFORE</span>
+     <span class="sliderLabel right">AFTER</span>
+     <button class="expandBtn" aria-label="View Fullscreen" title="View Fullscreen">⤢</button>
+    </div>
+    <div class="processInfo">
+     <div>
+      <h3>Shot 001 / Day → Night / Environment Transformation</h3>
+      <p>Interactive before/after transformation from the original daylight plate to the finished night composite.</p>
+      <div class="shotTags"><span>NUKE</span></div>
+     </div>
+     <span class="shotNo">001</span>
+    </div>
+   </article>
+
+   <article class="processShot reveal sliderShot" data-shot="2">
+    <div class="processFrame">
+     <img class="afterImage" loading="lazy" src="assets/Comp%20After-4.png" alt="Compositing shot after">
+     <img class="beforeImage" loading="lazy" src="assets/Comp%20Before-4.png" alt="Compositing shot before">
+     <div class="sliderHandle"></div>
+     <input type="range" min="0" max="100" value="50" class="sliderRange" aria-label="Image comparison slider">
+     <span class="processBadge">ENVIRONMENT</span>
+     <span class="sliderLabel left">BEFORE</span>
+     <span class="sliderLabel right">AFTER</span>
+     <button class="expandBtn" aria-label="View Fullscreen" title="View Fullscreen">⤢</button>
+    </div>
+    <div class="processInfo">
+     <div>
+      <h3>Shot 002 / CGI Comp</h3>
+      <p>A seamless environment extension and integration workflow.</p>
+      <div class="shotTags"><span>MAYA</span><span>NUKE</span></div>
+     </div>
+     <span class="shotNo">002</span>
+    </div>
+   </article>
+
+   <article class="processShot reveal stepShot" data-shot="3">
+    <div class="processFrame">
+     <img class="stepImage active" loading="lazy" src="assets/roto1d.png" alt="Roto Step 1">
+     <img class="stepImage" loading="lazy" src="assets/roto1e.png" alt="Roto Step 2">
+     <img class="stepImage" loading="lazy" src="assets/roto1b.png" alt="Roto Step 3">
+     <img class="stepImage" loading="lazy" src="assets/roto1c.png" alt="Roto Step 4">
+     <img class="stepImage" loading="lazy" src="assets/roto1a.png" alt="Roto Step 5">
+     <div class="stepControls">
+      <button class="stepBtn active" data-index="0">1</button>
+      <button class="stepBtn" data-index="1">2</button>
+      <button class="stepBtn" data-index="2">3</button>
+      <button class="stepBtn" data-index="3">4</button>
+      <button class="stepBtn" data-index="4">5</button>
+     </div>
+     <span class="processBadge">ROTO PROGRESSION</span>
+     <button class="expandBtn" aria-label="View Fullscreen" title="View Fullscreen">⤢</button>
+    </div>
+    <div class="processInfo">
+     <div>
+      <h3>Shot 003 / Character Rotoscopy Step-by-Step Breakdown</h3>
+      <p>Cutting out a character from video footage frame-by-frame to isolate them from the background.</p>
+      <div class="shotTags"><span>SILHOUETTE</span><span>MOCHA PRO</span></div>
+     </div>
+     <span class="shotNo">003</span>
+    </div>
+   </article>
+
+   <article class="processShot reveal stepShot" data-shot="4">
+    <div class="processFrame">
+     <img class="stepImage active" loading="lazy" src="assets/roto2.png" alt="Roto Step 1">
+     <img class="stepImage" loading="lazy" src="assets/roto-2g.png" alt="Roto Step 2">
+     <img class="stepImage" loading="lazy" src="assets/roto-2h.png" alt="Roto Step 3">
+     <img class="stepImage" loading="lazy" src="assets/roto-2f.png" alt="Roto Step 4">
+     <img class="stepImage" loading="lazy" src="assets/roto2d.png" alt="Roto Step 5">
+     <img class="stepImage" loading="lazy" src="assets/roto2a.png" alt="Roto Step 6">
+     <img class="stepImage" loading="lazy" src="assets/roto2b.png" alt="Roto Step 7">
+     <img class="stepImage" loading="lazy" src="assets/roto2c.png" alt="Roto Step 8">
+     <img class="stepImage" loading="lazy" src="assets/roto2e.png" alt="Roto Step 9">
+     <div class="stepControls">
+      <button class="stepBtn active" data-index="0">1</button>
+      <button class="stepBtn" data-index="1">2</button>
+      <button class="stepBtn" data-index="2">3</button>
+      <button class="stepBtn" data-index="3">4</button>
+      <button class="stepBtn" data-index="4">5</button>
+      <button class="stepBtn" data-index="5">6</button>
+      <button class="stepBtn" data-index="6">7</button>
+      <button class="stepBtn" data-index="7">8</button>
+      <button class="stepBtn" data-index="8">9</button>
+     </div>
+     <span class="processBadge">ROTO PROGRESSION</span>
+     <button class="expandBtn" aria-label="View Fullscreen" title="View Fullscreen">⤢</button>
+    </div>
+    <div class="processInfo">
+     <div>
+      <h3>Shot 004 / Stereo Rotoscopy Step-by-Step Breakdown</h3>
+      <p>Complex articulated rotoscoping for organic movement, showcasing spline placement, colored mattes, and final alpha extraction.</p>
+      <div class="shotTags"><span>SILHOUETTE</span><span>MOCHA PRO</span><span>AFTER EFFECTS</span></div>
+     </div>
+     <span class="shotNo">004</span>
+    </div>
+   </article>
+
+   <article class="processShot reveal sliderShot" data-shot="5">
+    <div class="processFrame">
+     <img class="afterImage" loading="lazy" src="assets/Paint%20After-1.png" alt="Plate after cleanup">
+     <img class="beforeImage" loading="lazy" src="assets/Paint%20Before-1.png" alt="Plate before cleanup">
+     <div class="sliderHandle"></div>
+     <input type="range" min="0" max="100" value="50" class="sliderRange" aria-label="Image comparison slider">
+     <span class="processBadge">CLEANUP</span>
+     <span class="sliderLabel left">BEFORE</span>
+     <span class="sliderLabel right">AFTER</span>
+     <button class="expandBtn" aria-label="View Fullscreen" title="View Fullscreen">⤢</button>
+    </div>
+    <div class="processInfo">
+     <div>
+      <h3>Shot 005 / Character Clean Plate</h3>
+      <p>Removing the foreground subject and seamlessly rebuilding the concrete wall texture behind them.</p>
+      <div class="shotTags"><span>NUKE</span><span>MOCHA PRO</span><span>SILHOUETTE</span></div>
+     </div>
+     <span class="shotNo">005</span>
+    </div>
+   </article>
+
+   <article class="processShot reveal sliderShot" data-shot="6">
+    <div class="processFrame">
+     <img class="afterImage" loading="lazy" src="assets/Paint%20After-2.png" alt="Plate after cleanup">
+     <img class="beforeImage" loading="lazy" src="assets/Paint%20Before-2.png" alt="Plate before cleanup">
+     <div class="sliderHandle"></div>
+     <input type="range" min="0" max="100" value="50" class="sliderRange" aria-label="Image comparison slider">
+     <span class="processBadge">CLEANUP</span>
+     <span class="sliderLabel left">BEFORE</span>
+     <span class="sliderLabel right">AFTER</span>
+     <button class="expandBtn" aria-label="View Fullscreen" title="View Fullscreen">⤢</button>
+    </div>
+    <div class="processInfo">
+     <div>
+      <h3>Shot 006 / Complex BG Restoration</h3>
+      <p>Isolating and removing the subject while maintaining the complex glass grid and accurate reflections.</p>
+      <div class="shotTags"><span>NUKE</span><span>SILHOUETTE</span><span>MOCHA PRO</span></div>
+     </div>
+     <span class="shotNo">006</span>
+    </div>
+   </article>
+
+   <article class="processShot reveal sliderShot" data-shot="7">
+    <div class="processFrame">
+     <img class="afterImage" loading="lazy" src="assets/Paint%20After-3.png" alt="Plate after vehicle removal">
+     <img class="beforeImage" loading="lazy" src="assets/Paint%20Before-3.png" alt="Plate before vehicle removal">
+     <div class="sliderHandle"></div>
+     <input type="range" min="0" max="100" value="50" class="sliderRange" aria-label="Image comparison slider">
+     <span class="processBadge">VEHICLE REMOVAL</span>
+     <span class="sliderLabel left">BEFORE</span>
+     <span class="sliderLabel right">AFTER</span>
+     <button class="expandBtn" aria-label="View Fullscreen" title="View Fullscreen">⤢</button>
+    </div>
+    <div class="processInfo">
+     <div>
+      <h3>Shot 007 / Vehicle Clean Plate</h3>
+      <p>Removing the moving vehicle and restoring the natural dirt road tracking and shadow details.</p>
+      <div class="shotTags"><span>NUKE</span><span>MOCHA PRO</span></div>
+     </div>
+     <span class="shotNo">007</span>
+    </div>
+   </article>
+
+   <article class="processShot reveal sliderShot" data-shot="8">
+    <div class="processFrame">
+     <img class="afterImage" loading="lazy" src="assets/Paint%20After-4.png" alt="Green screen after marker removal">
+     <img class="beforeImage" loading="lazy" src="assets/Paint%20Before-4.png" alt="Green screen before marker removal">
+     <div class="sliderHandle"></div>
+     <input type="range" min="0" max="100" value="50" class="sliderRange" aria-label="Image comparison slider">
+     <span class="processBadge">MARKER REMOVAL</span>
+     <span class="sliderLabel left">BEFORE</span>
+     <span class="sliderLabel right">AFTER</span>
+     <button class="expandBtn" aria-label="View Fullscreen" title="View Fullscreen">⤢</button>
+    </div>
+    <div class="processInfo">
+     <div>
+      <h3>Shot 008 / Keying Prep</h3>
+      <p>Green screen cleanup, removing all tracking markers to provide a clean plate for the final keying process.</p>
+      <div class="shotTags"><span>SILHOUETTE</span><span>NUKE</span></div>
+     </div>
+     <span class="shotNo">008</span>
+    </div>
+   </article>
+
+   <article class="processShot reveal sliderShot" data-shot="9">
+    <div class="processFrame">
+     <img class="afterImage" loading="lazy" src="assets/Paint%20After-5.png" alt="Aerial shot after cleanup">
+     <img class="beforeImage" loading="lazy" src="assets/Paint%20Before-5.png" alt="Aerial shot before cleanup">
+     <div class="sliderHandle"></div>
+     <input type="range" min="0" max="100" value="50" class="sliderRange" aria-label="Image comparison slider">
+     <span class="processBadge">AERIAL CLEANUP</span>
+     <span class="sliderLabel left">BEFORE</span>
+     <span class="sliderLabel right">AFTER</span>
+     <button class="expandBtn" aria-label="View Fullscreen" title="View Fullscreen">⤢</button>
+    </div>
+    <div class="processInfo">
+     <div>
+      <h3>Shot 009 / Drone Shot Cleanup</h3>
+      <p>Removing the yellow car from the aerial drone shot and seamlessly reconstructing the road surface.</p>
+      <div class="shotTags"><span>NUKE</span><span>MOCHA PRO</span></div>
+     </div>
+     <span class="shotNo">009</span>
+    </div>
+   </article>
+
+   <!-- NEW MATTE PAINTING TOGGLE SHOT (SHOT 010) -->
+   <article class="processShot reveal dmpShot" data-shot="10">
+    <div class="processFrame">
+     <img class="dmpImage active" loading="lazy" src="assets/Matte_Painting_V009_with_effect.jpg" alt="Final Matte Painting With Effect">
+     <img class="dmpImage" loading="lazy" src="assets/Matte_Painting_V002.jpg" alt="Matte Painting Base Plate">
+     <div class="dmpControls">
+      <button class="dmpBtn active" data-view="final">1</button>
+      <button class="dmpBtn" data-view="base">2</button>
+     </div>
+     <span class="processBadge">MATTE PAINTING</span>
+     <button class="expandBtn" aria-label="View Fullscreen" title="View Fullscreen">⤢</button>
+    </div>
+    <div class="processInfo">
+     <div>
+      <h3>Shot 010 / Digital Matte Painting Showcase</h3>
+      <p>Switch between the final stylized matte painting with atmospheric lighting effects and the source base environment plate.</p>
+      <div class="shotTags"><span>PHOTOSHOP</span><span>NUKE</span></div>
+     </div>
+     <span class="shotNo">010</span>
+    </div>
+   </article>
+
+  </div>
+  <div class="labCaption"><span>PROCESS / INTERACTIVE SHOWCASE</span><span>COMPARISON VIEW</span></div>
+ </div>
+</section>
+
+<section class="reelSection" id="showreel">
+ <div class="wrap">
+  <div class="sectionLabel reveal">02 / SHOWREELS</div>
+  <div class="sectionTitle reveal">THE<br>REELS.</div>
+  <p class="sectionIntro reveal">Discipline-focused reels covering the areas I want to bring into production.</p>
+
+  <div class="reelStack">
+
+   <article class="reelShowcase reveal">
+    <div class="reelVideo">
+     <button class="expandBtn" aria-label="View Fullscreen" title="View Fullscreen">⤢</button>
+     <video muted loop playsinline controls preload="metadata" poster="assets/Comp_Poster.jpg">
+      <source src="assets/Comp_Showreel.mp4" type="video/mp4">
+     </video>
+    </div>
+    <div class="reelDetails">
+     <div class="reelNumber">01</div>
+     <div>
+      <div class="reelKicker">COMPOSITING</div>
+      <h3>Comp Showreel</h3>
+      <p>Shot integration, compositing, CG integration and final image finishing. A focused reel showing the compositing side of the workflow.</p>
+      <div class="reelTags"><span>COMPOSITING</span><span>CG INTEGRATION</span><span>FINISHING</span></div>
+     </div>
+    </div>
+   </article>
+
+   <article class="reelShowcase reveal">
+    <div class="reelVideo">
+     <button class="expandBtn" aria-label="View Fullscreen" title="View Fullscreen">⤢</button>
+     <video muted loop playsinline controls preload="metadata" poster="assets/Roto_Poster.jpg">
+      <source src="assets/Roto_Showreel.mp4" type="video/mp4">
+     </video>
+    </div>
+    <div class="reelDetails">
+     <div class="reelNumber">02</div>
+     <div>
+      <div class="reelKicker">ROTO / PAINT</div>
+      <h3>Roto Showreel</h3>
+      <p>Rotoscoping and precision masking work, focused on clean edges, isolation and production-ready mattes.</p>
+      <div class="reelTags"><span>ROTO</span><span>MASKING</span><span>EDGE WORK</span></div>
+     </div>
+    </div>
+   </article>
+
+   <article class="reelShowcase reveal">
+    <div class="reelVideo">
+     <button class="expandBtn" aria-label="View Fullscreen" title="View Fullscreen">⤢</button>
+     <video muted loop playsinline controls preload="metadata" poster="assets/Paint_Poster.jpg">
+      <source src="assets/Paint_Showreel.mp4" type="video/mp4">
+     </video>
+    </div>
+    <div class="reelDetails">
+     <div class="reelNumber">03</div>
+     <div>
+      <div class="reelKicker">PAINT / CLEANUP</div>
+      <h3>Paint Showreel</h3>
+      <p>Cleanup and paint work presented as a dedicated reel, covering the detail-oriented side of shot finishing and image repair.</p>
+      <div class="reelTags"><span>PAINT</span><span>CLEANUP</span><span>WIRE REMOVAL</span></div>
+     </div>
+    </div>
+   </article>
+
+   <article class="reelShowcase reveal">
+    <div class="reelVideo">
+     <button class="expandBtn" aria-label="View Fullscreen" title="View Fullscreen">⤢</button>
+     <video muted loop playsinline controls preload="metadata" poster="assets/DMP_Poster.jpg">
+      <source src="assets/Digital_Matte_Painting_Matchmove_Showreel.mp4" type="video/mp4">
+     </video>
+    </div>
+    <div class="reelDetails">
+     <div class="reelNumber">04</div>
+     <div>
+      <div class="reelKicker">DMP / MATCHMOVE</div>
+      <h3>Digital Matte Painting & Matchmove</h3>
+      <p>A dedicated reel for digital environment work and matchmove, giving this part of the portfolio its own space rather than hiding it inside the main showreel.</p>
+      <div class="reelTags"><span>DMP</span><span>MATCHMOVE</span><span>ENVIRONMENT</span></div>
+     </div>
+    </div>
+   </article>
+
+  </div>
+ </div>
+</section>
+
+<section id="about">
+ <div class="wrap">
+  <div class="sectionLabel reveal">03 / PROFILE</div>
+  <div class="sectionTitle reveal">CRAFT +<br>TECHNICAL.</div>
+
+  <div class="aboutGrid">
+   <div class="aboutText reveal">
+    <div class="aboutLead">VFX ARTIST / VISUAL EFFECTS</div>
+    <p>I’m a VFX artist focused on compositing, roto, paint, digital matte painting and matchmove. I enjoy the technical side of building believable images — from precise mattes and cleanup through to the final composite.</p>
+
+    <div class="skills">
+     <div class="skill"><b>Compositing</b><span>Shot integration / finishing</span></div>
+     <div class="skill"><b>Rotoscopy</b><span>Precision masks / edge work</span></div>
+     <div class="skill"><b>Paint/Prep</b><span>Cleanup / image repair</span></div>
+     <div class="skill"><b>DMP</b><span>Digital Matte Painting</span></div>
+     <div class="skill"><b>CGI & FX</b><span>3d elements integration with FX simulations</span></div>
+     <div class="skill"><b>Matchmove</b><span>Tracking techniques like manual and automation</span></div>
+    </div>
+
+    <div class="softwareBlock">
+     <div class="miniLabel">SOFTWARE / TOOLS</div>
+     <div class="softwareList">
+      <span>NUKE</span>
+      <span>SILHOUETTE</span>
+      <span>MAYA</span>
+      <span>AFTER EFFECTS</span>
+      <span>PHOTOSHOP</span>
+      <span>PREMIERE PRO</span>
+      <span>MOCHA PRO</span>
+      <span>HOUDINI</span>
+     </div>
+    </div>
+   </div>
+
+   <div class="docs reveal" id="docs">
+    <div class="miniLabel">EDUCATION & QUALIFICATIONS</div>
+    <a class="doc" href="assets/NandiniMisra_CV.pdf" download="Nandini_Misra_CV.pdf">
+      <div><b>Resume / CV</b><small>Download PDF ↓</small></div><span class="arrow">↓</span>
+    </a>
+    <a class="doc" href="https://www.linkedin.com/in/nandini-misra3636/" target="_blank" rel="noopener">
+      <div><b>LinkedIn Profile</b><small>View Profile ↗</small></div><span class="arrow">↗</span>
+    </a>
+
+    <div class="marksheetsBlock">
+      <div class="miniLabel">ACADEMIC MARKSHEETS</div>
+      <div class="marksheetsGrid">
+       <a class="marksheetCard" href="assets/marksheets/1st_yrr_page-0001.jpg" data-marksheet="Year 1 — Semester 1" aria-label="Open Year 1 — Semester 1 marksheet">
+        <img src="assets/marksheets/1st_yrr_page-0001.jpg" alt="Year 1 — Semester 1 marksheet" loading="lazy">
+        <div class="marksheetInfo"><div><b>Year 1 — Semester 1</b><small>Open full marksheet ↗</small></div><span class="marksheetArrow">↗</span></div>
+       </a>
+       <a class="marksheetCard" href="assets/marksheets/2nd_yrr_page-0001.jpg" data-marksheet="Year 1 — Semester 2" aria-label="Open Year 1 — Semester 2 marksheet">
+        <img src="assets/marksheets/2nd_yrr_page-0001.jpg" alt="Year 1 — Semester 2 marksheet" loading="lazy">
+        <div class="marksheetInfo"><div><b>Year 1 — Semester 2</b><small>Open full marksheet ↗</small></div><span class="marksheetArrow">↗</span></div>
+       </a>
+       <a class="marksheetCard" href="assets/marksheets/3rd_yrr_page-0001.jpg" data-marksheet="Year 2 — Semester 1" aria-label="Open Year 2 — Semester 1 marksheet">
+        <img src="assets/marksheets/3rd_yrr_page-0001.jpg" alt="Year 2 — Semester 1 marksheet" loading="lazy">
+        <div class="marksheetInfo"><div><b>Year 2 — Semester 1</b><small>Open full marksheet ↗</small></div><span class="marksheetArrow">↗</span></div>
+       </a>
+       <a class="marksheetCard" href="assets/marksheets/4th_yrr_page-0001.jpg" data-marksheet="Year 2 — Semester 2" aria-label="Open Year 2 — Semester 2 marksheet">
+        <img src="assets/marksheets/4th_yrr_page-0001.jpg" alt="Year 2 — Semester 2 marksheet" loading="lazy">
+        <div class="marksheetInfo"><div><b>Year 2 — Semester 2</b><small>Open full marksheet ↗</small></div><span class="marksheetArrow">↗</span></div>
+       </a>
+       <a class="marksheetCard" href="assets/marksheets/5th_yrr_page-0001.jpg" data-marksheet="Year 3 — Semester 1" aria-label="Open Year 3 — Semester 1 marksheet">
+        <img src="assets/marksheets/5th_yrr_page-0001.jpg" alt="Year 3 — Semester 1 marksheet" loading="lazy">
+        <div class="marksheetInfo"><div><b>Year 3 — Semester 1</b><small>Open full marksheet ↗</small></div><span class="marksheetArrow">↗</span></div>
+       </a>
+       <a class="marksheetCard" href="assets/marksheets/6th_yrr_page-0001.jpg" data-marksheet="Year 3 — Semester 2" aria-label="Open Year 3 — Semester 2 marksheet">
+        <img src="assets/marksheets/6th_yrr_page-0001.jpg" alt="Year 3 — Semester 2 marksheet" loading="lazy">
+        <div class="marksheetInfo"><div><b>Year 3 — Semester 2</b><small>Open full marksheet ↗</small></div><span class="marksheetArrow">↗</span></div>
+       </a>
+       <a class="marksheetCard" href="assets/marksheets/Moople_3D_Animation_Diploma_Certification_page.jpg" data-marksheet="Moople — 3D Design & Animation Diploma" aria-label="Open Moople 3D Design and Animation diploma certificate">
+        <img src="assets/marksheets/Moople_3D_Animation_Diploma_Certification_page.jpg" alt="Moople 3D Design and Animation diploma certificate" loading="lazy">
+        <div class="marksheetInfo"><div><b>Moople — 3D Animation Diploma</b><small>Open full certificate ↗</small></div><span class="marksheetArrow">↗</span></div>
+       </a>
+      </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+
+<section class="certificatesSection" id="certificates">
+  <div class="wrap">
+    <div class="sectionLabel reveal">04 / CERTIFICATES</div>
+    <div class="sectionTitle reveal">CERTIFICATES<br>& CREDENTIALS.</div>
+    <p class="sectionIntro reveal">Selected certificates and training credentials. Open the folder to view the certificate files.</p>
+
+    <div class="certificatesGrid">
+      <a class="certificateCard reveal"
+         href="https://drive.google.com/drive/folders/1C5Wlk1_WkrJH9wgYDFc7TsWScFmR3SQg?usp=sharing"
+         target="_blank" rel="noopener">
+        <div>
+          <b>View Certificates</b>
+          <small>Open certificate folder ↗</small>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="contactSection" id="contact">
+ <div class="wrap">
+  <div class="sectionLabel reveal">05 / CONTACT</div>
+  <div class="contactGrid">
+   <div class="reveal">
+    <div class="contactKicker">AVAILABLE FOR VFX WORK</div>
+    <div class="contactTitle">LET'S MAKE<br>THE SHOT.</div>
+   </div>
+   <div class="contactLinks reveal">
+    <a href="mailto:nandinimisra3636@gmail.com" class="contactLink">
+     <span>EMAIL</span><b>nandinimisra3636@gmail.com ↗</b>
+    </a>
+    <a href="https://www.linkedin.com/in/nandini-misra3636/" class="contactLink" target="_blank" rel="noopener">
+     <span>NETWORK</span><b>LinkedIn ↗</b>
+    </a>
+   </div>
+  </div>
+ </div>
+</section>
+<footer>
+ <div class="wrap">
+  <div class="footerBig">NANDINI<br>MISRA.</div>
+  <div class="footerRow">
+   <span>VFX ARTIST / ROTO · PAINT · COMP</span>
+   <span>© 2026 NANDINI MISRA</span>
+  </div>
+ </div>
+</footer>
+
+<!-- LIGHTBOX OVERLAY -->
+<div id="lightbox" class="lightbox">
+  <button class="lightboxClose" aria-label="Close Lightbox">✕</button>
+  <div class="lightboxContent"></div>
+</div>
+
+<!-- BACK TO TOP BUTTON -->
+<button id="backToTop" aria-label="Back to Top">↑</button>
+
+<script>
+(function () {
+  // Function to bind slider events
+  function bindSlider(frame) {
+    var slider = frame.querySelector('.sliderRange');
+    var beforeImg = frame.querySelector('.beforeImage');
+    var handle = frame.querySelector('.sliderHandle');
+    if (!slider || !beforeImg || !handle) return;
+
+    slider.addEventListener('input', function(e) {
+      var val = e.target.value;
+      beforeImg.style.clipPath = 'inset(0 ' + (100 - val) + '% 0 0)';
+      handle.style.left = val + '%';
+    });
+  }
+
+  // Function to bind step-by-step events
+  function bindSteps(frame) {
+    var btns = frame.querySelectorAll('.stepBtn');
+    var imgs = frame.querySelectorAll('.stepImage');
+    if (btns.length === 0) return;
+
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation(); 
+        var idx = this.getAttribute('data-index');
+        btns.forEach(function(b) { b.classList.remove('active'); });
+        imgs.forEach(function(i) { i.classList.remove('active'); });
+        this.classList.add('active');
+        imgs[idx].classList.add('active');
+      });
+    });
+  }
+
+  // Function to bind DMP toggle events
+  function bindDmp(frame) {
+    var btns = frame.querySelectorAll('.dmpBtn');
+    var imgs = frame.querySelectorAll('.dmpImage');
+    if (btns.length === 0) return;
+
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var idx = this.getAttribute('data-view') === 'final' ? 0 : 1;
+        btns.forEach(function(b) { b.classList.remove('active'); });
+        imgs.forEach(function(i) { i.classList.remove('active'); });
+        this.classList.add('active');
+        imgs[idx].classList.add('active');
+      });
+    });
+  }
+
+  // Bind interactions for the main page
+  document.querySelectorAll('.processFrame').forEach(function(frame) {
+    bindSlider(frame);
+    bindSteps(frame);
+    bindDmp(frame);
+  });
+
+  // 3. Fullscreen Lightbox System
+  var lightbox = document.getElementById('lightbox');
+  var lightboxContent = lightbox.querySelector('.lightboxContent');
+  var lightboxClose = lightbox.querySelector('.lightboxClose');
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    setTimeout(function() { lightboxContent.innerHTML = ''; }, 400);
+  }
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e) {
+    if(e.target === lightbox || e.target === lightboxContent) closeLightbox();
+  });
+  document.addEventListener('keydown', function(e) {
+    if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+  });
+
+  document.querySelectorAll('.expandBtn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var frame = this.closest('.processFrame, .reelVideo');
+      lightboxContent.innerHTML = ''; 
+
+      if(frame.classList.contains('reelVideo')) {
+        var vid = frame.querySelector('video').cloneNode(true);
+        vid.setAttribute('controls', 'true');
+        vid.muted = false; 
+        lightboxContent.appendChild(vid);
+        vid.play().catch(function(e){});
+      } else {
+        var clonedFrame = frame.cloneNode(true);
+        var cloneExpandBtn = clonedFrame.querySelector('.expandBtn');
+        if(cloneExpandBtn) cloneExpandBtn.remove();
+        
+        lightboxContent.appendChild(clonedFrame);
+        
+        bindSlider(clonedFrame);
+        bindSteps(clonedFrame);
+        bindDmp(clonedFrame);
+      }
+
+      lightbox.classList.add('active');
+    });
+  });
+
+  // Academic marksheet lightbox
+  document.querySelectorAll('.marksheetCard').forEach(function(card) {
+    card.addEventListener('click', function(e) {
+      e.preventDefault();
+      lightboxContent.innerHTML = '';
+      var img = document.createElement('img');
+      img.src = this.getAttribute('href');
+      img.alt = this.getAttribute('data-marksheet') || 'Academic marksheet';
+      img.style.maxWidth = '100%';
+      img.style.maxHeight = '90vh';
+      img.style.objectFit = 'contain';
+      img.style.borderRadius = '12px';
+      img.style.boxShadow = '0 30px 80px rgba(0,0,0,0.8)';
+      lightboxContent.appendChild(img);
+      lightbox.classList.add('active');
+    });
+  });
+
+  // 4. Scroll-Triggered Reveal Animations
+  var revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    revealObserver.observe(el);
+  });
+
+  // 5. Smart Video Playback
+  var videoObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.play().catch(function(e) {});
+      } else {
+        entry.target.pause();
+      }
+    });
+  }, { threshold: 0.25 });
+
+  document.querySelectorAll('.reelVideo video').forEach(function(video) {
+    videoObserver.observe(video);
+  });
+
+  // 6. Pre-loader
+  window.addEventListener('load', function() {
+    var preloader = document.getElementById('preloader');
+    if(preloader) {
+      preloader.style.opacity = '0';
+      setTimeout(function(){ preloader.remove(); }, 600);
+    }
+  });
+
+  // 7. Hero Parallax Effect & Carousel
+  var heroVisualImg = document.querySelector('.heroVisual img');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY < window.innerHeight && heroVisualImg) {
+      heroVisualImg.style.transform = 'scale(1.15) translateY(' + (window.scrollY * 0.35) + 'px)';
+    }
+  });
+
+  var heroBgs = document.querySelectorAll('.heroBg');
+  if(heroBgs.length > 1) {
+    var currentBg = 0;
+    setInterval(function() {
+      heroBgs[currentBg].classList.remove('active');
+      currentBg = (currentBg + 1) % heroBgs.length;
+      heroBgs[currentBg].classList.add('active');
+    }, 4000); 
+  }
+
+  // 8. Back to Top Button
+  var btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 500) btt.classList.add('show');
+    else btt.classList.remove('show');
+  });
+  btt.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+})();
+</script>
+
+</body>
+</html>
