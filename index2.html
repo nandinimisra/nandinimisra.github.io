@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Nandini Misra — VFX Artist portfolio, compositing, roto, paint and visual effects.">
+<title>Nandini Misra — VFX Artist | Compositing, Roto & Paint</title>
+<meta name="description" content="Nandini Misra — VFX Artist portfolio featuring compositing, rotoscoping, paint, digital matte painting and matchmove work.">
+<meta name="author" content="Nandini Misra">
+<meta name="theme-color" content="#070707">
+<meta property="og:title" content="Nandini Misra — VFX Artist">
+<meta property="og:description" content="VFX portfolio — compositing, roto, paint, DMP and matchmove.">
+<meta property="og:type" content="website">
+<style>
+:root{
+  --bg:#070707;--panel:#0e0e10;--text:#f5f5f2;--muted:#9b9b9b;
+  --line:rgba(255,255,255,.12);--lime:#d8ff42;--max:1320px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--lime);color:#000}
+
+/* NAV */
+nav{
+ position:fixed;z-index:50;top:0;left:0;right:0;height:76px;padding:0 4vw;
+ display:flex;align-items:center;justify-content:space-between;
+ background:linear-gradient(#070707e8,transparent);backdrop-filter:blur(12px)
+}
+.logo{font-weight:900;font-size:14px;letter-spacing:-.03em}
+.logo span{color:var(--lime)}
+.links{display:flex;gap:28px;font-size:11px;letter-spacing:.13em;color:#aaa}
+.links a{transition:.25s}.links a:hover{color:var(--lime)}
+
+/* HERO */
+.hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.heroVisual{position:absolute;inset:0}
+.heroVisual img{position:absolute;width:100%;height:100%;object-fit:cover;object-position:center}
+.heroVisual:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(90deg,#000b 0%,#0004 42%,transparent 72%),
+ linear-gradient(0deg,#070707 0%,transparent 43%);
+}
+.heroCopy{position:relative;z-index:3;width:min(var(--max),92%);margin:auto;padding:0 0 11vh}
+.kicker{font-size:10px;letter-spacing:.26em;color:var(--lime);text-transform:uppercase;margin-bottom:20px}
+h1{font-size:clamp(58px,9vw,145px);line-height:.82;letter-spacing:-.075em;max-width:900px}
+.heroCopy p{max-width:600px;margin-top:28px;color:#c6c6c6;font-size:16px;line-height:1.65}
+.heroMeta{margin-top:34px;display:flex;gap:10px;flex-wrap:wrap}
+.pill{border:1px solid #ffffff24;background:#0005;padding:8px 12px;border-radius:999px;font-size:10px;color:#ccc}
+.heroCorner{position:absolute;right:4vw;bottom:11vh;z-index:4;text-align:right;color:#aaa;font-size:9px;letter-spacing:.17em}
+.heroCorner strong{display:block;color:#fff;font-size:12px;margin-bottom:7px}
+.scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:4;font-size:9px;letter-spacing:.2em;color:#777}
+
+/* PROCESS / AUTO BEFORE → AFTER */
+section{padding:130px 0}
+.wrap{width:min(var(--max),92%);margin:auto}
+.sectionLabel{font-size:10px;color:var(--lime);letter-spacing:.25em;text-transform:uppercase;margin-bottom:14px}
+.sectionTitle{font-size:clamp(40px,6vw,82px);line-height:.9;letter-spacing:-.065em}
+.sectionIntro{max-width:580px;color:var(--muted);line-height:1.7;font-size:14px;margin-top:20px}
+
+.processGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:55px}
+.processShot{background:#0b0b0d;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 30px 90px #0008; cursor:crosshair;}
+.processFrame{position:relative;aspect-ratio:16/9;overflow:hidden;background:#000}
+.processFrame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.processFrame .afterImage{opacity:0;transition:opacity .45s ease}
+.processFrame.showAfter .afterImage{opacity:1}
+.processBadge{position:absolute;left:18px;top:18px;z-index:3;padding:7px 10px;border:1px solid #fff2;background:#0009;border-radius:999px;font-size:9px;letter-spacing:.15em;color:#eee;text-transform:uppercase}
+.processState{position:absolute;right:18px;bottom:18px;z-index:3;padding:7px 10px;border:1px solid #fff2;background:#0009;border-radius:999px;font-size:9px;letter-spacing:.15em;color:#eee;text-transform:uppercase}
+.processInfo{display:flex;justify-content:space-between;gap:20px;padding:20px 21px 22px}
+.processInfo h3{font-size:18px;letter-spacing:-.03em}
+.processInfo p{color:#777;font-size:11px;line-height:1.6;margin-top:7px;max-width:440px}
+.processInfo .shotNo{font-size:9px;color:#666;letter-spacing:.15em;padding-top:3px}
+.labCaption{display:flex;justify-content:space-between;margin-top:18px;color:#777;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+
+/* WORK */
+.workGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:55px}
+.project{
+ background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+ transition:.55s cubic-bezier(.2,.8,.2,1)
+}
+.project:hover{transform:translateY(-7px);border-color:#d8ff4244}
+.projectImg{aspect-ratio:16/10;overflow:hidden;background:#111}
+.projectImg img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.project:hover img{transform:scale(1.045)}
+.projectBody{padding:23px}
+.projectTop{display:flex;justify-content:space-between;gap:20px}
+.project h3{font-size:20px;letter-spacing:-.035em}
+.projectNo{font-size:9px;color:#666;letter-spacing:.15em}
+.project p{font-size:13px;line-height:1.65;color:#888;margin-top:9px}
+.projectTags{display:flex;gap:7px;flex-wrap:wrap;margin-top:17px}
+.projectTags span{font-size:9px;color:#aaa;border:1px solid var(--line);padding:6px 9px;border-radius:999px}
+
+/* SHOWREEL */
+.reelSection{background:#0b0b0d;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.reelStack{display:grid;gap:95px;margin-top:65px}
+.reelShowcase{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(260px,.55fr);gap:34px;align-items:center}
+.reelShowcase:nth-child(even){grid-template-columns:minmax(260px,.55fr) minmax(0,1.55fr)}
+.reelShowcase:nth-child(even) .reelVideo{grid-column:2;grid-row:1}
+.reelShowcase:nth-child(even) .reelDetails{grid-column:1;grid-row:1}
+.reelVideo{aspect-ratio:16/9;background:#000;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 25px 70px #0008}
+.reelVideo video{width:100%;height:100%;border:0;display:block;object-fit:cover;background:#000}
+.reelDetails{display:grid;grid-template-columns:35px 1fr;gap:20px;padding-bottom:4px}
+.reelNumber{font-size:10px;color:#666;letter-spacing:.12em;padding-top:5px}
+.reelKicker{font-size:9px;color:var(--lime);letter-spacing:.2em;margin-bottom:9px}
+.reelDetails h3{font-size:clamp(22px,2.4vw,34px);letter-spacing:-.045em;line-height:1}
+.reelDetails p{color:#888;font-size:13px;line-height:1.75;margin-top:14px}
+.reelTags{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
+.reelTags span{font-size:9px;color:#aaa;border:1px solid var(--line);padding:6px 9px;border-radius:999px}
+
+/* ABOUT / QUALIFICATIONS */
+.aboutGrid{display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-top:60px}
+.aboutText p{color:#999;line-height:1.8;font-size:14px;max-width:570px}
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:28px}
+.skill{padding:15px;border:1px solid var(--line);border-radius:11px;background:#0d0d0f;font-size:11px}
+.skill b{display:block;font-size:13px;margin-bottom:4px}.skill span{color:#666}
+.docs{display:grid;gap:10px}
+.doc{
+ display:flex;align-items:center;justify-content:space-between;gap:20px;
+ padding:21px;border:1px solid var(--line);background:#0d0d0f;border-radius:12px;
+ transition:.25s
+}
+.doc:hover{border-color:#d8ff4260;transform:translateX(4px)}
+.doc small{display:block;color:#666;margin-top:4px;font-size:10px}
+.doc .arrow{color:var(--lime);font-size:17px}
+
+/* FOOTER */
+footer{padding:80px 0 30px;border-top:1px solid var(--line)}
+.footerBig{font-size:clamp(45px,8vw,110px);letter-spacing:-.07em;line-height:.85}
+.footerRow{display:flex;justify-content:space-between;margin-top:60px;color:#666;font-size:10px;letter-spacing:.12em}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.show{opacity:1;transform:none}
+
+@media(max-width:800px){
+ .links{display:none}
+ section{padding:90px 0}
+ .heroCopy{padding-bottom:90px}
+ .heroCorner{display:none}
+ .workGrid,.aboutGrid,.reelShowcase,.processGrid{grid-template-columns:1fr}
+ .maskCursor{width:120px;height:120px}
+ .skills{grid-template-columns:1fr}.reelStack{gap:65px}.reelDetails{padding:0 4px}
+ .footerRow{display:block;line-height:2}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}.reveal{transition:none}.project,.projectImg img{transition:none}
+}
+</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23070707'/%3E%3Ctext x='50' y='67' text-anchor='middle' font-size='48' font-family='Arial' font-weight='900' fill='%23d8ff42'%3ENM%3C/text%3E%3C/svg%3E">
+
+<style id="portfolio-final-pass">
+.heroActions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.primaryAction,.secondaryAction{font-size:10px;letter-spacing:.14em;padding:11px 14px;border-radius:999px;transition:.25s}
+.primaryAction{background:var(--lime);color:#000;font-weight:800}
+.secondaryAction{border:1px solid #ffffff30;color:#ddd}
+.primaryAction:hover,.secondaryAction:hover{transform:translateY(-2px)}
+.aboutLead{font-size:10px;letter-spacing:.2em;color:var(--lime);margin-bottom:14px}
+.miniLabel{font-size:9px;letter-spacing:.2em;color:#666;margin-bottom:14px;text-transform:uppercase}
+.softwareBlock{margin-top:42px;padding-top:25px;border-top:1px solid var(--line)}
+.softwareList{display:flex;gap:8px;flex-wrap:wrap}
+.softwareList span{font-size:9px;letter-spacing:.08em;padding:8px 10px;border:1px solid var(--line);border-radius:999px;color:#bbb}
+.contactSection{padding:125px 0;border-top:1px solid var(--line);background:#09090a}
+.contactGrid{display:grid;grid-template-columns:1.4fr .6fr;gap:60px;margin-top:45px;align-items:end}
+.contactKicker{font-size:10px;letter-spacing:.22em;color:var(--lime);margin-bottom:16px}
+.contactTitle{font-size:clamp(55px,8vw,115px);line-height:.82;letter-spacing:-.075em}
+.contactLinks{display:grid;gap:10px}
+.contactLink{display:block;padding:19px;border:1px solid var(--line);border-radius:12px;background:#0d0d0f;transition:.25s}
+.contactLink:hover{border-color:#d8ff4260;transform:translateX(4px)}
+.contactLink span{display:block;color:#666;font-size:9px;letter-spacing:.18em;margin-bottom:8px}
+.contactLink b{font-size:13px;font-weight:500;color:#ddd;overflow-wrap:anywhere}
+@media(max-width:800px){
+ .contactGrid{grid-template-columns:1fr;gap:35px}
+ .contactSection{padding:90px 0}
+}
+</style>
+
+</head>
+<body>
+
+<nav>
+ <a class="logo" href="#top">NANDINI<span>.</span>MISRA</a>
+ <div class="links">
+   <a href="#work">WORK</a>
+   <a href="#showreel">SHOWREEL</a>
+   <a href="#about">ABOUT</a>
+   <a href="#docs">QUALIFICATIONS</a>
+ </div>
+</nav>
+
+<header class="hero" id="top">
+ <div class="heroVisual"><img src="assets/after.png" alt="VFX compositing work"></div>
+ <div class="heroCopy reveal">
+   <div class="kicker">NANDINI MISRA / VFX ARTIST</div>
+   <h1>MAKE THE<br>FRAME BELIEVABLE.</h1>
+   <p>VFX artist focused on compositing, rotoscoping, paint, digital matte painting and matchmove — with an emphasis on clean, production-ready shots.</p>
+   <div class="heroMeta">
+    <span class="pill">ROTO & PAINT</span><span class="pill">COMPOSITING</span><span class="pill">MATCHMOVE</span><span class="pill">CG / FX</span>
+   </div>
+   <div class="heroActions">
+    <a class="primaryAction" href="#showreel">VIEW SHOWREELS ↓</a>
+    <a class="secondaryAction" href="#contact">CONTACT ↗</a>
+   </div>
+ </div>
+ <div class="heroCorner"><strong>01 — NIGHT STREET</strong>DAY → NIGHT / LIGHTING / SKY</div>
+ <div class="scroll">SCROLL ↓</div>
+</header>
+
+<section id="work">
+ <div class="wrap">
+  <div class="sectionLabel reveal">01 / SELECTED WORK</div>
+  <div class="sectionTitle reveal">SHOW THE<br>PROCESS.</div>
+  <p class="sectionIntro reveal">The final image matters, but so does the work behind it. Explore a shot from source plate to finished composite. Hover over a shot to pause the breakdown.</p>
+
+  <div class="processGrid">
+   <article class="processShot reveal autoShot" data-shot="1">
+    <div class="processFrame">
+     <img src="assets/before.png" alt="Daylight plate before VFX">
+     <img class="afterImage" src="assets/after.png" alt="Finished night composite">
+     <span class="processBadge">DAY → NIGHT</span>
+     <span class="processState">BEFORE</span>
+    </div>
+    <div class="processInfo">
+     <div><h3>Day → Night / Environment Transformation</h3><p>One continuous shot shown as a single Before → After transformation, automatically switching from the original daylight plate to the finished night composite after 1.5 seconds.</p></div>
+     <span class="shotNo">001</span>
+    </div>
+   </article>
+
+   <article class="processShot reveal autoShot" data-shot="2">
+    <div class="processFrame">
+     <img src="assets/Comp%20Before-4.png" alt="Compositing shot before">
+     <img class="afterImage" src="assets/Comp%20After-4.png" alt="Compositing shot after">
+     <span class="processBadge">BEFORE → AFTER</span>
+     <span class="processState">BEFORE</span>
+    </div>
+    <div class="processInfo">
+     <div><h3>Shot 002 / Environment Composite</h3><p>A separate compositing transformation, cycling automatically between the source plate and finished result.</p></div>
+     <span class="shotNo">002</span>
+    </div>
+   </article>
+  </div>
+  <div class="labCaption"><span>PROCESS / BEFORE → AFTER</span><span>BEFORE 1.5 SEC → AFTER</span></div>
+ </div>
+</section>
+
+<section class="reelSection" id="showreel">
+ <div class="wrap">
+  <div class="sectionLabel reveal">02 / SHOWREELS</div>
+  <div class="sectionTitle reveal">THE<br>REELS.</div>
+  <p class="sectionIntro reveal">Discipline-focused reels covering the areas I want to bring into production.</p>
+
+  <div class="reelStack">
+
+   <article class="reelShowcase reveal">
+    <div class="reelVideo">
+     <video autoplay muted loop playsinline controls preload="metadata" poster="assets/Comp_Poster.jpg">
+      <source src="assets/Comp_Showreel.mp4" type="video/mp4">
+     </video>
+    </div>
+    <div class="reelDetails">
+     <div class="reelNumber">01</div>
+     <div>
+      <div class="reelKicker">COMPOSITING</div>
+      <h3>Comp Showreel</h3>
+      <p>Shot integration, compositing, CG integration and final image finishing. A focused reel showing the compositing side of the workflow.</p>
+      <div class="reelTags"><span>COMPOSITING</span><span>CG INTEGRATION</span><span>FINISHING</span></div>
+     </div>
+    </div>
+   </article>
+
+   <article class="reelShowcase reveal">
+    <div class="reelVideo">
+     <video autoplay muted loop playsinline controls preload="metadata" poster="assets/Roto_Poster.jpg">
+      <source src="assets/Roto_Showreel.mp4" type="video/mp4">
+     </video>
+    </div>
+    <div class="reelDetails">
+     <div class="reelNumber">02</div>
+     <div>
+      <div class="reelKicker">ROTO / PAINT</div>
+      <h3>Roto Showreel</h3>
+      <p>Rotoscoping and precision masking work, focused on clean edges, isolation and production-ready mattes.</p>
+      <div class="reelTags"><span>ROTO</span><span>MASKING</span><span>EDGE WORK</span></div>
+     </div>
+    </div>
+   </article>
+
+   <article class="reelShowcase reveal">
+    <div class="reelVideo">
+     <video autoplay muted loop playsinline controls preload="metadata" poster="assets/Paint_Poster.jpg">
+      <source src="assets/Paint_Showreel.mp4" type="video/mp4">
+     </video>
+    </div>
+    <div class="reelDetails">
+     <div class="reelNumber">03</div>
+     <div>
+      <div class="reelKicker">PAINT / CLEANUP</div>
+      <h3>Paint Showreel</h3>
+      <p>Cleanup and paint work presented as a dedicated reel, covering the detail-oriented side of shot finishing and image repair.</p>
+      <div class="reelTags"><span>PAINT</span><span>CLEANUP</span><span>WIRE REMOVAL</span></div>
+     </div>
+    </div>
+   </article>
+
+   <article class="reelShowcase reveal">
+    <div class="reelVideo">
+     <video autoplay muted loop playsinline controls preload="metadata" poster="assets/DMP_Poster.jpg">
+      <source src="assets/Digital_Matte_Painting_Matchmove_Showreel.mp4" type="video/mp4">
+     </video>
+    </div>
+    <div class="reelDetails">
+     <div class="reelNumber">04</div>
+     <div>
+      <div class="reelKicker">DMP / MATCHMOVE</div>
+      <h3>Digital Matte Painting & Matchmove</h3>
+      <p>A dedicated reel for digital environment work and matchmove, giving this part of the portfolio its own space rather than hiding it inside the main showreel.</p>
+      <div class="reelTags"><span>DMP</span><span>MATCHMOVE</span><span>ENVIRONMENT</span></div>
+     </div>
+    </div>
+   </article>
+
+  </div>
+ </div>
+</section>
+
+<section id="about">
+ <div class="wrap">
+  <div class="sectionLabel reveal">03 / PROFILE</div>
+  <div class="sectionTitle reveal">CRAFT +<br>TECHNICAL.</div>
+
+  <div class="aboutGrid">
+   <div class="aboutText reveal">
+    <div class="aboutLead">VFX ARTIST / VISUAL EFFECTS</div>
+    <p>I’m a VFX artist focused on compositing, roto, paint, digital matte painting and matchmove. I enjoy the technical side of building believable images — from precise mattes and cleanup through to the final composite.</p>
+
+    <div class="skills">
+     <div class="skill"><b>Compositing</b><span>Shot integration / finishing</span></div>
+     <div class="skill"><b>Roto</b><span>Precision masks / edge work</span></div>
+     <div class="skill"><b>Paint</b><span>Cleanup / image repair</span></div>
+     <div class="skill"><b>DMP & Matchmove</b><span>Environments / tracking</span></div>
+    </div>
+
+    <div class="softwareBlock">
+     <div class="miniLabel">SOFTWARE / TOOLS</div>
+     <div class="softwareList">
+      <span>NUKE</span>
+      <span>BLENDER</span>
+      <span>MAYA</span>
+      <span>AFTER EFFECTS</span>
+      <span>PHOTOSHOP</span>
+      <span>PREMIERE PRO</span>
+     </div>
+    </div>
+   </div>
+
+    <div class="docs reveal" id="docs">
+    <div class="miniLabel">EDUCATION & QUALIFICATIONS</div>
+    
+    <!-- Forces the PDF to download directly -->
+    <a class="doc" href="assets/NandiniMisra_CV.pdf" download="Nandini_Misra_CV.pdf">
+      <div><b>Resume / CV</b><small>Download PDF ↓</small></div><span class="arrow">↓</span>
+    </a>
+    
+    <a class="doc" href="https://www.linkedin.com/in/nandini-misra3636/" target="_blank" rel="noopener">
+      <div><b>LinkedIn Profile</b><small>View Profile ↗</small></div><span class="arrow">↗</span>
+    </a>
+    
+    <!-- Now points to the assets folder instead of Google Drive -->
+    <a class="doc" href="assets/More_Breakdowns.zip" download>
+      <div><b>More Breakdowns</b><small>Download ZIP ↓</small></div><span class="arrow">↓</span>
+    </a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="contactSection" id="contact">
+ <div class="wrap">
+  <div class="sectionLabel reveal">04 / CONTACT</div>
+  <div class="contactGrid">
+   <div class="reveal">
+    <div class="contactKicker">AVAILABLE FOR VFX WORK</div>
+    <div class="contactTitle">LET'S MAKE<br>THE SHOT.</div>
+   </div>
+   <div class="contactLinks reveal">
+    <a href="mailto:nandinimisra3636@gmail.com" class="contactLink">
+     <span>EMAIL</span><b>nandini@gmail.com ↗</b>
+    </a>
+    <a href="https://www.linkedin.com/in/nandini-misra3636/" class="contactLink" target="_blank" rel="noopener">
+     <span>NETWORK</span><b>LinkedIn ↗</b>
+    </a>
+   </div>
+  </div>
+ </div>
+</section>
+<footer>
+ <div class="wrap">
+  <div class="footerBig">NANDINI<br>MISRA.</div>
+  <div class="footerRow">
+   <span>VFX ARTIST / COMPOSITING · ROTO · PAINT</span>
+   <span>© 2026 NANDINI MISRA</span>
+  </div>
+ </div>
+</footer>
+
+<script>
+// Day → Night / Before → After playback.
+// Each plate is held for 1.5 seconds, then crossfades to the other plate.
+// Added a hover check so recruiters can pause the animation to inspect details.
+(function () {
+  document.querySelectorAll('.autoShot').forEach(function (shot, index) {
+    var frame = shot.querySelector('.processFrame');
+    var state = shot.querySelector('.processState');
+    var before = frame && frame.querySelector('img:not(.afterImage)');
+    var after = frame && frame.querySelector('img.afterImage');
+    if (!frame || !before || !after) return;
+
+    var showingAfter = false;
+    var isHovered = false;
+    frame.classList.remove('showAfter');
+    if (state) state.textContent = 'BEFORE';
+
+    // Pause on hover
+    shot.addEventListener('mouseenter', function() { isHovered = true; });
+    shot.addEventListener('mouseleave', function() { isHovered = false; });
+
+    function togglePlate() {
+      if (isHovered) return; // Skips the toggle if mouse is over the image
+      showingAfter = !showingAfter;
+      frame.classList.toggle('showAfter', showingAfter);
+      if (state) state.textContent = showingAfter ? 'AFTER' : 'BEFORE';
+    }
+
+    // First shot starts immediately; second is slightly staggered.
+    window.setTimeout(function () {
+      togglePlate();
+      window.setInterval(togglePlate, 1500);
+    }, index * 750 + 1500);
+  });
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    observer.observe(el);
+  });
+})();
+</script>
+
+</body>
+</html>
